@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id "me.champeau.gradle.jmh" version "0.4.6"
+}
+
+apply plugin: 'me.champeau.gradle.jmh'
+
+group 'com.instructure.mobius'
+version '1.0-SNAPSHOT'
+
+
+dependencies {
+    compile group: 'org.openjdk.jmh', name: 'jmh-core', version: '1.22'
+    testCompile group: 'org.openjdk.jmh', name: 'jmh-generator-annprocess', version: '1.22'
+}
+
+
+jmh {
+    include = 'com\\.instructure\\.perftestpoc\\.jmh\\.LoopBechmark.*'
+    humanOutputFile = null
+    warmupIterations = 1
+    iterations = 1
+}
+
+// it is possible to tweak the jmhJar task directly
+jmhJar.baseName = 'custom15'
+
+subprojects {
+    apply plugin: 'me.champeau.gradle.jmh'
+
+    jmh {
+        include = 'com\\.instructure\\.perftestpoc\\.jmh\\.LoopBechmark.*'
+        humanOutputFile = null
+        warmupIterations = 1
+        iterations = 1
+    }
+
+}

@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    group = 'com.instructure.mobius'
+    version = '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.9
+    targetCompatibility = 1.9
+
+    repositories {
+        jcenter()
+    }
+}

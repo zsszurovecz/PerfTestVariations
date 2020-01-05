@@ -1,0 +1,10 @@
+
+.idea/*
+
+# Gradle:
+# .idea/gradle.xml
+# .idea/libraries
+**/build/**
+**/classes/**
+
+.gradle

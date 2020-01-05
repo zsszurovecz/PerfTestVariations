@@ -1,0 +1,5 @@
+include 'jmh-solution'
+include 'gatling-solution'
+include 'demo-webapp'
+include 'junitPerf-solution'
+

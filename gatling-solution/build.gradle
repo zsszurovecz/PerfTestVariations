@@ -1,0 +1,59 @@
+plugins {
+    id "com.github.lkishalmi.gatling" version "3.2.9"
+    id 'com.github.johnrengelman.shadow' version '4.0.1'
+}
+apply plugin: 'scala'
+
+group 'com.instructure.mobius'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    testRuntime group: 'org.scala-lang', name: 'scala-library', version: '2.13.1'
+    compile group: 'io.gatling', name: 'gatling-http', version: '3.2.1'
+    compile group: 'io.gatling', name: 'gatling-core', version: '3.2.1'
+    compile group: 'io.gatling', name: 'gatling-app', version: '3.2.1'
+    compile('io.gatling.highcharts:gatling-charts-highcharts:2.3.0')
+}
+
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/gatling/simulations/']
+        }
+    }
+}
+
+shadowJar {
+    baseName = 'perf-test'
+    classifier = null
+    version = null
+    from compileJava
+    from compileTestJava
+}
+
+task copyJar(dependsOn: shadowJar, type: Copy) {
+    into('.')
+    from(shadowJar)
+}
+
+task bzt(dependsOn: copyJar) {
+    group 'taurus'
+    description 'Run taurus performance test'
+    doLast {
+        exec {
+            commandLine "sh", "-c", "bzt src/taurus/taurus_gatling_with_params_test.yml"
+        }
+    }
+}
+
+gatling {
+    simulations = {
+        include "*.scala"
+    }
+}
+
+ScalaCompileOptions.metaClass.daemonServer = true
+ScalaCompileOptions.metaClass.fork = true
+ScalaCompileOptions.metaClass.useAnt = false
+ScalaCompileOptions.metaClass.useCompileDaemon = false
