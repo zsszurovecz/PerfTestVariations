@@ -1,0 +1,6 @@
+execution:
+  - scenario: basic
+
+scenarios:
+  basic:
+    script: ../jmeter/jmeter_basic_test.jmx

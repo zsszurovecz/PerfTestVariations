@@ -23,7 +23,7 @@ jmh {
 }
 
 // it is possible to tweak the jmhJar task directly
-jmhJar.baseName = 'custom15'
+jmhJar.baseName = 'custom16'
 
 subprojects {
     apply plugin: 'me.champeau.gradle.jmh'

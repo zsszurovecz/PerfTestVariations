@@ -1,0 +1,21 @@
+execution:
+  - concurrency: 10
+    hold-for: 1m
+    ramp-up: 30s
+    scenario: yaml_example
+
+scenarios:
+  yaml_example:
+    retrieve-resources: false
+    requests:
+      - http://localhost:8443/api/greeting
+
+reporting:
+  - module: final-stats
+  - module: console
+
+settings:
+  check-interval: 2s
+  default-executor: jmeter
+
+provisioning: local

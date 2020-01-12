@@ -1,0 +1,9 @@
+[
+  {
+    "example": "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+    "data": {
+      "url": "http://testUrl",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    }
+  }
+]

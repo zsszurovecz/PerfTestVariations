@@ -1,0 +1,19 @@
+modules:
+  gatling:
+    properties:
+      testedAppToken: ""                 #add your token here
+      testedHost: "http://localhost"  #add tested host here
+      testedPort: ":8443"                  #(optional) add port here with a ":" prefix
+
+execution:
+  - executor: gatling
+    scenario: sample
+
+scenarios:
+  sample:
+    script: gatling/simulations/ExampleScalaSimulations.scala
+    simulation: simulations.ExampleScalaSimulations
+
+reporting:
+  - module: final-stats
+    dump-xml: taurus_stats.xml
