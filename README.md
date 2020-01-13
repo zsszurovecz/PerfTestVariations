@@ -8,6 +8,10 @@ There is a very simple spring based web application in the demo-webapp module.
 You can start it easily with a ./gradlew bootRun command
 
 ## TAURUS
+Taurus is a nice tool to execute your existing JMeter test cases without any JMeter knowledge or installed JMeter libary. 
+Apart from that you can write your test cases in a YAML file and execute it with this tool. (Other supported test files: https://gettaurus.org/docs/ExecutionSettings/#Executor-Types)
+
+See: https://gettaurus.org/
 
 ### How to install Taurus
 
@@ -26,18 +30,19 @@ Use the following commmand _(to open a new terminal to see the results in action
 ```bzt -o modules.console.screen=gui ./exampleTaurusPureSimulation.yml```
 
 ### Solution 1 - Taurus executes JMeter
-
-Taurus is a nice tool to execute your existing JMeter test cases without any JMeter knowledge or installed JMeter libary.
+How to execute existing JMeter tests.
 
 #### Execution
 ```bzt exampleTaurusJmeterSimulation.yml```
 
 ### Solution 2 - Taurus executes pure YAML
+How to execute pure YAML tests.
 
 #### Execution
 ```bzt exampleTaurusPureSimulation.yml```
 
 ### Solution 3 - Taurus executes Gatling test
+How to execute existing Gatling tests (to have prettier report)
 
 #### Execution
 ```bzt exampleTaurusScalaSimulation.yml```
